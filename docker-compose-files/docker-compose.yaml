@@ -13,12 +13,12 @@ services:
     build:
       context: "./api"
       container_name: node-container
-      restart: always
-      volumes:
-        - ./api:/home/node/app
-      ports:
-        - "9001:9001"
-      depends_on:
+    restart: always
+    volumes:
+      - ./api:/home/node/app
+    ports:
+      - "9001:9001"
+    depends_on:
         - db
   web:
     image: "php:7.2-apache"
@@ -27,7 +27,7 @@ services:
     volumes:
       - ./website:/var/www/html
     ports:
-      -"8888:80"
-    depend_on:
-      -db
-      -api
+      - "8888:80"
+    depends_on:
+      - db
+      - api
