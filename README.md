@@ -1,5 +1,5 @@
-# descriptors-diagrams
-Creates system architectural diagrams from docker-compose files. 
+# Descriptor to Deployment Diagram (D2DD)
+Creates deployment diagrams from docker-compose files. 
 
 ## Instalation
 It requires **Python 3.6** or higher. In addition, you will need to install other dependencies:
