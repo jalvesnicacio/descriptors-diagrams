@@ -1,0 +1,41 @@
+version: '3.7'
+services:
+  zookeeper:
+    image: zookeeper:3.4
+    ports:
+      - "2181:2181"
+      - "2888:2888"
+      - "3888:3888"
+  kafka:
+    image: 52north/kafka:0.11.0.0
+    ports:
+      - "9092:9092"
+    environment:
+       ZOOKEEPER_CONNECT: zookeeper:2181
+    links:
+      - "zookeeper"
+  mysql:
+    image: mysql:8.0.19
+    command: '--default-authentication-plugin=mysql_native_password'
+    restart: always
+    secrets:
+      - db-password
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=example
+      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db-password
+  connect:
+    image: 52north/kafka-connect-debezium:0.11.0.0
+    restart: unless-stopped
+    ports:
+      - "8083:8083"
+    links:
+      - "kafka:kafka"
+      - "zookeeper:zookeeper"
+      - "postgis-debezium:postgres"
+    environment:
+      GROUP_ID: 1
+      CONFIG_STORAGE_TOPIC: my-connect-configs
+      OFFSET_STORAGE_TOPIC: my-connect-offsets
+      BOOTSTRAP_SERVERS: kafka:9092

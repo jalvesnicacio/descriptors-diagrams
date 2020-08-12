@@ -8,13 +8,15 @@ class ServiceBuilder():
         self.__container_name = None
         self.__volumes = []  #List of volumes
         self.__depends_on = [] #Service depends on other services
+        self.__links = [] #List of links
 
     def with_image_name(self):
         dict = self.__dict
         if(dict.get('image') is not None):
-            self.__image_name = dict.get('image')
+            self.__image_name = self.set_image_name(dict.get('image'))
         elif(dict.get('build') is not None):
             build = dict.get('build')
+            #print(dict.get('container_name'))
             if(build.get('container_name') is not None):
                 self.__image_name = build.get('container_name')
             else:
@@ -29,6 +31,13 @@ class ServiceBuilder():
             build = dict.get('build')
             if(build.get('container_name') is not None):
                 self.__container_name = build.get('container_name')
+        return self
+
+    def with_links(self):
+        data_links = self.__dict.get('links')
+        if(data_links is not None):
+            for link in data_links:
+                self.__links.append(link)
         return self
 
     # Todo: is not finished
@@ -51,6 +60,18 @@ class ServiceBuilder():
                 self.__depends_on.append(don)
         return self
 
+
+    def set_image_name(self, raw_name):
+        name = raw_name
+        if name.find("/"):
+            arr_name = name.split("/")
+            name = arr_name[len(arr_name) - 1]
+        if name.find(":"):
+            arr_name = name.split(":")
+            name = arr_name[0]
+        return name
+
+
     def build(self):
         # ... make something
         return Service(
@@ -58,4 +79,5 @@ class ServiceBuilder():
             self.__image_name,
             self.__container_name,
             self.__volumes,
-            self.__depends_on)
+            self.__depends_on,
+            self.__links)

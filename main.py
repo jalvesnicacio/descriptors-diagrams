@@ -3,8 +3,8 @@ from diagram_builder import DiagramBuilder
 import yaml
 
 #load yaml file
-stream = open('docker-compose-files/docker-compose3.yaml')
-data = yaml.load(stream, Loader=yaml.FullLoader) # <-- deprecated
+stream = open('docker-compose-files/docker-compose-mysql.yaml')
+data = yaml.load(stream, Loader=yaml.FullLoader)
 
 
 #Criando o objeto Diagram:
@@ -18,4 +18,5 @@ diagram = (
     )
 
 #Projetando o diagrama:
-diagram.design()
+diagram.design("./diagram")
+#self.__diagram_filename =

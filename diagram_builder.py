@@ -28,6 +28,7 @@ class DiagramBuilder():
                 .with_container_name()
                 .with_volumes()
                 .with_depends_on()
+                .with_links()
                 .build()
             )
             self.__services.append(service)

@@ -1,5 +1,5 @@
-# Descriptor to Deployment Diagram (D2DD)
-Creates deployment diagrams from docker-compose files. 
+# compose-diagrams
+Creates system architectural diagrams from docker-compose files. 
 
 ## Instalation
 It requires **Python 3.6** or higher. In addition, you will need to install other dependencies:
@@ -31,9 +31,9 @@ pip install pyyaml
 ```
 For more details, please see the [project documentation](https://pyyaml.org/wiki/PyYAMLDocumentation)
 
-## About Descriptors-Diagrams
+## About Compose-Diagrams
 
-In the current version, descriptors-diagrams is just a prototype. The goal is to design architecture diagrams of distributed systems from the docker-compose file. Below is a diagram constructed from the parse of a docker-compose file.
+In the current version, compose-diagrams is just a prototype. The goal is to design architecture diagrams of distributed systems from the docker-compose file. Below is a diagram constructed from the parse of a docker-compose file.
 
 ![Diagram example: currently compose-diagrams recognizes the services declared in the docker-compose](diagram.png){ width=30% }
 
