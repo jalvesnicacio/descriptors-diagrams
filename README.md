@@ -35,7 +35,7 @@ For more details, please see the [project documentation](https://pyyaml.org/wiki
 
 In the current version, compose-diagrams is just a prototype. The goal is to design architecture diagrams of distributed systems from the docker-compose file. Below is a diagram constructed from the parse of a docker-compose file.
 
-![Diagram example: currently compose-diagrams recognizes the services declared in the docker-compose](diagram.png){ width=30% }
+![Diagram example: currently compose-diagrams recognizes the services declared in the docker-compose](diagram.png)
 
 
 
