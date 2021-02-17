@@ -1,4 +1,4 @@
-# compose-diagrams
+# descriptor-diagrams
 Creates system architectural diagrams from docker-compose files. 
 
 ## Instalation
