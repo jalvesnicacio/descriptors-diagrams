@@ -1,4 +1,4 @@
-# descriptor-diagrams
+# DAD - Descriptor to Architectural Diagrams
 Creates system architectural diagrams from docker-compose files. 
 
 ## Instalation
