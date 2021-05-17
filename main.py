@@ -7,7 +7,7 @@ stream = open('docker-compose-files/docker-compose-mysql.yaml')
 data = yaml.load(stream, Loader=yaml.FullLoader)
 
 
-#Criando o objeto Diagram:
+#Criando o objeto Diagram (usando Builder pattern):
 diagram = (
     DiagramBuilder(data)
     .with_title()
