@@ -7,17 +7,17 @@ Its goal is to design architecture diagrams of distributed systems from  docker-
 DAD reads multi-container [Docker Compose](https://docs.docker.com/compose/) `.yalm` files and outputs a diagram `.png` image representing the Docker Compose file.
   
 ```
-                  ┌────────────────────┐
-                  │ Diagram .png image │
-                  │                    │
-  ┌───────┐       │            ┌───┐   │
-  │ .yalm │       │  ┌───┐ --- │   │   │
-  │  file │  ══>  │  │   │     └───┘   │
-  │ ..... │       │  └───┘ \           │
-  └───────┘       │         \ ┌───┐    │
-                  │           │   │    │
-                  │           └───┘    │
-                  └────────────────────┘
+  ┌────────────────────┐       ┌────────────────────┐
+  │ Docker Compose     │       │ Diagram .png image │
+  │ .yalm file         │       │                    │
+  │────────────────────│       │            ┌───┐   │
+  │ version: 'x.y'     │       │  ┌───┐ --- │   │   │
+  │ services:          │  ══>  │  │   │     └───┘   │
+  │   service X:       │       │  └───┘ \           │
+  │     params...      │       │         \ ┌───┐    │
+  │   service Y:       │       │           │   │    │
+  │ ...                │       │           └───┘    │
+  └────────────────────┘       └────────────────────┘
 ```
 
 ## Setting up
